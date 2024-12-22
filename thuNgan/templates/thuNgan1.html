@@ -1,0 +1,97 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
+<section id="thuNgan" class="thuNgan">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/thuNgan.css') }}">
+    <div class="container-lg p-5">
+            <div class="row billInput p-5">
+                <div class="col">
+                    <form>
+                        <label for="billId">Tìm kiếm hóa đơn: </label>
+                        <input type="text" id="billID" name="billID" class="border">
+{#                        <input type="submit" value="Tìm Kiếm" class="idSearchBtn">#}
+                    </form>
+                </div>
+                <div class="col">
+                    <form>
+                        <label for="billId">Nhập ngày: </label>
+                        <input type="date" id="billDate" name="billDate" class="border">
+                        <input type="submit" value="Tìm Kiếm" class="idSearchBtn">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive-lg">
+        <table class="table align-items-center table-striped table-bordered table-hover">
+            <thead class="thead-light text-center">
+                <tr>
+                    <th scope="col">Mã hóa đơn</th>
+                    <th scope="col">Họ Tên</th>
+                    <th scope="col">Ngày Khám</th>
+                    <th scope="col">Tiền Khám</th>
+                    <th scope="col">Tiền Thuốc</th>
+                    <th scope="col">Tổng Tiền</th>
+                    <th scope="col">Tình trạng</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for b in bills %}
+                <tr class="text-center">
+                    <th scope="row">{{ b.id }}</th>
+                     <td>Dũng</td>
+                     <td>11/10</td>
+                     <td>{{ b.tienKham }}</td>
+                     <td>{{ b.tienThuoc }}</td>
+                     <td>{{ b.tienKham+ b.tienThuoc }}</td>
+                    {% if b.tinhTrang %}
+                     <td>
+                         <button class="bg-transparent text-danger">Thanh Toán</button>
+                     </td>
+                    {% else %}
+                    <td >Đã thanh Toán</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+{#            <tbody>#}
+{#                 <tr>#}
+{#                    <th scope="row">1</th>#}
+{#                     <td>Bảo</td>#}
+{#                     <td>11/10</td>#}
+{#                     <td>17.000</td>#}
+{#                     <td>100.000</td>#}
+{#                     <td>117.000</td>#}
+{#                     <td>Chưa Thanh Toán</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                     <th scope="row">2</th>#}
+{#                     <td>Đại</td>#}
+{#                     <td>11/10</td>#}
+{#                     <td>17.000</td>#}
+{#                     <td>100.000</td>#}
+{#                     <td>117.000</td>#}
+{#                     <td>Chưa Thanh Toán</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">3</th>#}
+{#                     <td>Dũng</td>#}
+{#                     <td>11/10</td>#}
+{#                     <td>17.000</td>#}
+{#                     <td>100.000</td>#}
+{#                     <td>117.000</td>#}
+{#                     <td>Chưa Thanh Toán</td>#}
+{#                </tr>#}
+{#            </tbody>#}
+
+        </table>
+    </div>
+            </div>
+
+        </div>
+
+
+
+</section>
+
+{% endblock %}
+<!-- Custom Css -->

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phòng Mạch Tư BeSTRONG - Tận tâm chăm sóc</title>
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/clinic.png') }}">
+    <meta name = "description" content="BeSTRONG - Tận tâm chăm sóc">
+    <meta name = "keywords" content="phòng bệnh, phòng mạch, phòng mạch tư, phòng khám, private clinic, clinic">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/mainStyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/thuNgan.css') }}">
+    <!--Bootstrap5 file link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<section class="header">
+    <!-- To TOP Button-->
+    <a class="top" href="#"></a>
+
+    <header>
+        <!-- logo name  -->
+        <a href="#" class="logo"><span>D</span>octors <span>C</span>ares.</a>
+        <!-- navbar link  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Trang Chủ</a></li>
+                <li><a href="#about">Về Chúng Tôi</a></li>
+                <li><a href="#doctor">Các Chuyên Gia</a></li>
+                <li><a href="#review">Nhận Xét</a></li>
+                <li><a href="#contact">Liên Hệ Chúng Tôi</a></li>
+                <li><a href="#blog">Bài Viết</a></li>
+                <li><button class="text-danger bg-transparent">Đăng Xuất</button></li>
+            </ul>
+        </nav>
+        <div class="fas fa-bars"></div>
+    </header>
+</section>
+<!--Main body start-->
+
+<section id="thuNgan" class="thuNgan">
+
+    <div class="container-lg p-5">
+            <div class="row billInput p-5">
+                <div class="col">
+                    <form>
+                        <label for="billId">Tìm kiếm hóa đơn: </label>
+                        <input type="text" id="billID" name="billID" class="border">
+{#                        <input type="submit" value="Tìm Kiếm" class="idSearchBtn">#}
+                    </form>
+                </div>
+                <div class="col">
+                    <form>
+                        <label for="billId">Nhập ngày: </label>
+                        <input type="date" id="billDate" name="billDate" class="border">
+                        <input type="submit" value="Tìm Kiếm" class="idSearchBtn">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive-lg">
+        <table class="table align-items-center table-striped table-bordered table-hover">
+            <thead class="thead-light text-center">
+                <tr>
+                    <th scope="col">Mã hóa đơn</th>
+                    <th scope="col">Họ Tên</th>
+                    <th scope="col">Ngày Khám</th>
+                    <th scope="col">Tiền Khám</th>
+                    <th scope="col">Tiền Thuốc</th>
+                    <th scope="col">Tổng Tiền</th>
+                    <th scope="col">Tình trạng</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for b in bills %}
+                <tr class="text-center">
+                    <th scope="row">{{ b.id }}</th>
+                     <td>Dũng</td>
+                     <td>11/10</td>
+                     <td>{{ b.tienKham }}</td>
+                     <td>{{ b.tienThuoc }}</td>
+                     <td>{{ b.tienKham+ b.tienThuoc }}</td>
+                    {% if b.tinhTrang %}
+                     <td>
+                         <button class="bg-transparent text-danger">Thanh Toán</button>
+                     </td>
+                    {% else %}
+                    <td >Đã thanh Toán</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+{#            <tbody>#}
+{#                 <tr>#}
+{#                    <th scope="row">1</th>#}
+{#                     <td>Bảo</td>#}
+{#                     <td>11/10</td>#}
+{#                     <td>17.000</td>#}
+{#                     <td>100.000</td>#}
+{#                     <td>117.000</td>#}
+{#                     <td>Chưa Thanh Toán</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                     <th scope="row">2</th>#}
+{#                     <td>Đại</td>#}
+{#                     <td>11/10</td>#}
+{#                     <td>17.000</td>#}
+{#                     <td>100.000</td>#}
+{#                     <td>117.000</td>#}
+{#                     <td>Chưa Thanh Toán</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">3</th>#}
+{#                     <td>Dũng</td>#}
+{#                     <td>11/10</td>#}
+{#                     <td>17.000</td>#}
+{#                     <td>100.000</td>#}
+{#                     <td>117.000</td>#}
+{#                     <td>Chưa Thanh Toán</td>#}
+{#                </tr>#}
+{#            </tbody>#}
+
+        </table>
+    </div>
+            </div>
+
+        </div>
+
+
+
+</section>
+
+<!--Main body end-->
+
+<!-- footer section start  -->
+
+<section class="footer">
+
+    <div class="box">
+        <h2 class="logo"><span>D</span>octors <span>C</span>ares</h2>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam laboriosam quisquam facere pariatur ratione porro et vero dolore accusamus id?</p>
+    </div>
+
+    <div class="box">
+        <h2 class="logo"><span>S</span>hare</h2>
+
+        <a href="#">facebook</a>
+        <a href="#">twitter</a>
+        <a href="#">instagram</a>
+        <a href="#">pinterest</a>
+    </div>
+
+    <div class="box">
+        <h2 class="logo"><span>L</span>inks</h2>
+        <a href="#">home</a>
+        <a href="#">about</a>
+        <a href="#">Doctors</a>
+        <a href="#">Review</a>
+        <a href="#">contact</a>
+        <a href="#">blog</a>
+    </div>
+
+
+    <h1 class="credit">created by <span>BeSTRONG</span> all right reserved.</h1>
+</section>
+
+<!-- footer section end  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/mainScript.js') }}"></script>
+</body>
+</html>

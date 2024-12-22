@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/phieuKham.css') }}">
+    <!-- To TOP Button-->
+    <a class="top" href="#"></a>
+    <!--Main body under this-->
+    <section id="phieuKham" class="phieuKham">
+        <div class="container pt-5">
+            <h1 class="row">Lập Phiếu Khám</h1>
+            <form>
+                <div class="row d-flex">
+                    <label for="nameBS" class="">Bác Sĩ:</label>
+                    <input type="text" id="nameBS" name="nameBS" class="">
+                </div>
+
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
