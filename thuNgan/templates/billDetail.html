@@ -25,24 +25,27 @@
                     </thead>
                     <tbody>
                     <!-- 1 tr là 1 thuốc-->
-                        {% for t in thuocs %}
+                        {% if thuocs %}
+                            {% for thuoc in thuocs %}
+                                <tr>
+                                    <td class="center">1</td>
+                                    <td class="left">{{ t[0] }}</td>
+                                    <td class="left">{{ t[1] }}</td>
+                                    <td class="center">{{ t[2] }}</td>
+                                    <td class="right">{{ t[3] }}</td>
+                                    <td class="right">{{ t[4] }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+
                         <tr>
                             <td class="center">1</td>
-                            <td class="left">{{ t[0] }}</td>
-                            <td class="left">{{ t[1] }}</td>
-                            <td class="center">{{ t[2] }}</td>
-                            <td class="right">{{ t[3] }}</td>
-                            <td class="right">{{ t[4] }}</td>
+                            <td class="left">Laptops</td>
+                            <td class="left">Macbook Air 8GB RAM, 256GB SSD</td>
+                            <td class="center">5</td>
+                            <td class="right">$900</td>
+                            <td class="right">$4500</td>
                         </tr>
-                        {% end for %}
-{#                        <tr>#}
-{#                            <td class="center">1</td>#}
-{#                            <td class="left">Laptops</td>#}
-{#                            <td class="left">Macbook Air 8GB RAM, 256GB SSD</td>#}
-{#                            <td class="center">5</td>#}
-{#                            <td class="right">$900</td>#}
-{#                            <td class="right">$4500</td>#}
-{#                        </tr>#}
 {#                        <tr>#}
 {#                            <td class="center">2</td>#}
 {#                            <td class="left">Samsung SSD</td>#}

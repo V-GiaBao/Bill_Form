@@ -81,11 +81,11 @@
                             <td>{{ b.TienKham + b.TienThuoc }}</td>
                             {% if b.TinhTrangThanhToan %}
                                 <td>
-                                    <a class=" bg-transparent text-danger" href="/billDetail">Thanh Toán</a>
+                                    <a class=" bg-transparent text-danger" href='/bills/{{ b.id }}'>Thanh Toán</a>
                                 </td>
                             {% else %}
                                 <td>
-                                    <a class=" bg-transparent text-secondary">Đã thanh Toán</a>
+                                    <a class=" bg-transparent text-secondary" href='/bills/{{ b.id }}'>Đã thanh Toán</a>
                                 </td>
                             {% endif %}
                         </tr>

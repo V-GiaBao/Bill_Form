@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-
+import sys
+sys.set_int_max_str_digits(5000000)
 app = Flask(__name__)
 
 # app.app_context().push()

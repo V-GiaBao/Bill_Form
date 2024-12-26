@@ -34,6 +34,18 @@ class User(db.Model, UserMixin):
         return self.user_role == UserRole.ADMIN
 
 
+class Doctor(User):
+    __tablename__ = 'doctor'
+    id = Column(Integer, ForeignKey('user.id'), primary_key=True)  # Kế thừa từ User
+    specialization = Column(String(100), nullable=False)
+
+class Nurse(User):
+    __tablename__ = 'curse'
+    id = Column(Integer, ForeignKey('user.id'), primary_key=True)  # Kế thừa từ User
+    specialization = Column(String(100), nullable=False)
+
+
+
 class QuyDinh(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     TenQuyDinh = Column(String(50), nullable=False, unique=True)
@@ -89,6 +101,7 @@ class PhieuKham(db.Model):
     __tablename__ = 'phieu_kham'
     id = Column(Integer, primary_key=True, autoincrement=True)
     NgayLapPhieu = Column(DateTime)
+    LoaiBenh = Column(String(255),nullable=True)
     ThuocTrongPhieuKhams = relationship('ThuocTrongPhieuKham', backref='phieukham', lazy=True)
     # Tạo mối quan hệ 1-1
     HoaDon_id = Column(Integer, ForeignKey('hoa_don.id'), unique=True)

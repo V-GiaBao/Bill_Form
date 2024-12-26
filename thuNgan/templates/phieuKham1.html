@@ -39,7 +39,7 @@
     <div class="container p-5 ">
         <h1 class="text-center pb-md-5">Lập Phiếu Khám</h1>
         <div class="examForm container p-md-5">
-            <form method="POST" action="/phieuKham">
+            <form method="post" action="/phieuKham" enctype="multipart/form-data">
                 <div class="row pb-md-2">
                     <div class="col-sm-2 text-left align-items-center align-content-center">
                         <label for="docName">Bác Sĩ:</label>
@@ -51,16 +51,11 @@
                 </div>
                 <div class="row pb-md-2">
                     <div class="col-sm-2 text-left align-items-center align-content-center">
-                        <label for="patientName">Bệnh Nhân:</label>
+                        <label for="sdt">SĐT Bệnh Nhân:</label>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" id="patientName" name="patientName" list="patientList">
+                        <input type="text" id="sdt" name="sdt" placeholder="SĐT BỆNH NHÂN">
                         <!-- Nạp data bệnh nhân dk lich khám ở chỗ này ngay option-->
-                        <datalist id="patientList">
-                            <option value="Dũng">
-                            <option value="Bảo">
-                            <option value="Đại">
-                        </datalist>
                     </div>
                     <div class="col-sm-2 text-left align-items-center align-content-center">
                         <label for="dateForm">Ngày Khám:</label>
@@ -69,14 +64,14 @@
                         <input type="date" id="dateForm" name="dateForm" class="border" readonly>
                     </div>
                 </div>
-                <div class="row pb-md-2">
-                    <div class="col-sm-2 text-left align-items-center align-content-center">
-                        <label for="diagnosis">Chuẩn đoán:</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="text" id="diagnosis" name="diagnosis" class="border" placeholder="Chuẩn đoán">
-                    </div>
-                </div>
+{#                <div class="row pb-md-2">#}
+{#                    <div class="col-sm-2 text-left align-items-center align-content-center">#}
+{#                        <label for="diagnosis">Chuẩn đoán:</label>#}
+{#                    </div>#}
+{#                    <div class="col-sm-10">#}
+{#                        <input type="text" id="diagnosis" name="diagnosis" class="border" placeholder="Chuẩn đoán">#}
+{#                    </div>#}
+{#                </div>#}
 
                 <div class="row pb-md-2">
                     <div class="col-sm-2 text-left align-items-center align-content-center">
@@ -84,7 +79,7 @@
                     </div>
                     <div class="col-sm-10">
                         <input type="text" id="disease-txt" name="disease-txt" class="border"
-                               placeholder="Nhập loại bệnh" readonly>
+                               placeholder="Nhập loại bệnh">
                     </div>
                     {#                        <div class="col-sm-1 justify-content-center align-content-center">#}
                     {#                            <button type="button" class="med-remove-btn justify-content-center align-content-center" onclick="xoaBenh()">-</button>#}
@@ -107,27 +102,28 @@
                 <div class="medicine-box container mt-md-5">
                     <div class="row medicine-title">
                         <div class=" col-sm-3 text-center  ">Thuốc</div>
-                        <div class=" col-sm-2 text-center  ">Đơn vị</div>
-                        <div class=" col-sm-5 text-center  ">Cách dùng</div>
+{#                        <div class=" col-sm-2 text-center  ">Đơn vị</div>#}
+                        <div class=" col-sm-7 text-center  ">Cách dùng</div>
                         <div class=" col-sm-2 text-center  ">Số lượng</div>
                     </div>
                     <div id="med-container">
                         <!-- Phần tử ban đầu -->
                         <div class="row med-item pb-sm-2">
+
                             <div class=" col-sm-3 text-center  ">
                                 <input type="text" name="medicine" list="medicineList">
                                 <!-- Nhập data Thuốc ở chỗ này ngay option-->
                                 <datalist id="medicineList">
-                                    <option value="Abobotulinum Toxin A">
-                                    <option value="Ketorolac (Tiêm)">
-                                    <option value="Ticagrelor">
+                                    {% for t in thuocs %}
+                                    <option value="{{ t.TenThuoc }}">
+                                    {% endfor %}
                                 </datalist>
                             </div>
-                            <div class=" col-sm-2 text-center ">
-                                <input type="text" id="med-unit" name="med-unit" class="border" placeholder="Đơn vị"
-                                       onkeydown="return false">
-                            </div>
-                            <div class=" col-sm-5 text-center  ">
+{#                            <div class=" col-sm-2 text-center ">#}
+{#                                <input type="text" id="med-unit" name="med-unit" class="border" placeholder="Đơn vị"#}
+{#                                       onkeydown="return false">#}
+{#                            </div>#}
+                            <div class=" col-sm-7 text-center  ">
                                 <input type="text" id="med-instruct" name="med-instruct" class="border"
                                        placeholder="Cách dùng">
                             </div>
@@ -135,7 +131,9 @@
                                 <input type="text" id="med-number" name="med-number" class="border"
                                        placeholder="Số lượng">
                             </div>
+
                         </div>
+
                     </div>
                     <div class="d-flex flex-row-reverse">
                         <div class="p-2">
@@ -153,7 +151,8 @@
 
                 <div class="d-flex flex-row-reverse pt-lg-5">
                     <div class="p-2">
-                        <button class="submit-form">Xác nhận</button>
+                        <button type="submit" class="submit-form">Xác nhận</button>
+
                     </div>
                 </div>
             </form>
