@@ -8,7 +8,7 @@ body{
 }
 div.billInput{
     text-align: center;
-    font-size: 2rem;
+    font-size: 2rem;!important;
 }
 .idSearchBtn{
     background-color: #0dcaf0;
@@ -31,5 +31,5 @@ select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 7px;
-    font-size: 5px;
+    /*font-size: 5px;*/
 }
